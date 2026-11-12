@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026年11月12日 台灣今日前十大重要新聞｜每日新聞簡報</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Serif TC & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            gold: {
+              600: '#D97706',
+              500: '#F59E0B',
+              100: '#FEF3C7',
+            },
+            paper: '#F8FAFC',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans: ['"Noto Sans TC"', '"Inter"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+    }
+    .font-editorial {
+      font-family: 'Noto Serif TC', serif;
+    }
+    /* Custom subtle grid texture for editorial feel */
+    .bg-newsprint {
+      background-image: radial-gradient(#CBD5E1 0.75px, transparent 0.75px);
+      background-size: 20px 20px;
+    }
+    /* Smooth modal transition */
+    .modal-backdrop {
+      transition: opacity 0.25s ease;
+    }
+    .modal-panel {
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    /* Print styles */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .news-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        margin-bottom: 1rem !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-200 selection:text-slate-900">
+
+  <!-- 頂部報頭導覽列 -->
+  <header class="bg-navy-900 text-white border-b-4 border-gold-600 sticky top-0 z-30 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-bold tracking-widest uppercase bg-gold-600 text-white rounded">
+          DAILY BRIEFING
+        </span>
+        <span class="text-sm sm:text-base font-medium text-slate-200 tracking-wide">
+          台灣每日新聞編輯室｜2026年11月12日 星期四
+        </span>
+      </div>
+      <div class="flex items-center space-x-2 no-print">
+        <button onclick="copySummaryText()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-100 border border-slate-600 transition cursor-pointer">
+          <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+          複製今日摘要
+        </button>
+        <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg bg-gold-600 hover:bg-amber-700 text-white shadow-sm transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          列印 / 匯出 PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 複製成功提示 Toast -->
+  <div id="toastMsg" class="fixed bottom-5 right-5 z-50 hidden items-center gap-2 bg-navy-900 text-white px-4 py-3 rounded-xl shadow-xl border border-gold-600 text-sm font-medium">
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+    <span id="toastText">已成功複製今日十大新聞摘要！</span>
+  </div>
+
+  <!-- 主視覺區 Hero Banner -->
+  <section class="bg-navy-900 text-white relative overflow-hidden border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- 左側報頭標題與今日編輯室總覽 -->
+        <div class="lg:col-span-6 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-amber-400 text-xs sm:text-sm font-semibold">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            2026年11月12日 星期四・國內焦點精選
+          </div>
+          <h1 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
+            台灣今日前十大<br class="hidden sm:inline" />
+            <span class="text-amber-400">重要新聞全覽</span>
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            今日國內政經與民生焦點高度集中：司法界矚目的<strong>「寶林茶室案」</strong>一審宣判出爐；財經科技面受<strong>輝達（NVIDIA）盤後重挫</strong>牽動台股早盤劇烈震盪逾500點，同日<strong>MSCI季度調整</strong>給予台股權重「三升」；外交舞台聚焦<strong>APEC領袖會議</strong>由施振榮代表出席及G7重申台海和平；交通建設則迎來<strong>五股交流道北入高架匝道</strong>正式通車，大幅紓解通勤車潮。
+          </p>
+
+          <!-- 快速重點指標膠囊 -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+            <div class="bg-slate-800/75 border border-slate-700 rounded-xl p-3">
+              <div class="text-xs text-slate-400">司法焦點</div>
+              <div class="text-sm font-bold text-amber-400 mt-0.5">寶林案一審宣判</div>
+            </div>
+            <div class="bg-slate-800/75 border border-slate-700 rounded-xl p-3">
+              <div class="text-xs text-slate-400">股市動態</div>
+              <div class="text-sm font-bold text-rose-400 mt-0.5">台股震盪逾500點</div>
+            </div>
+            <div class="bg-slate-800/75 border border-slate-700 rounded-xl p-3">
+              <div class="text-xs text-slate-400">國際外交</div>
+              <div class="text-sm font-bold text-sky-400 mt-0.5">施振榮赴APEC</div>
+            </div>
+            <div class="bg-slate-800/75 border border-slate-700 rounded-xl p-3">
+              <div class="text-xs text-slate-400">重大交通</div>
+              <div class="text-sm font-bold text-emerald-400 mt-0.5">五股北入今通車</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側高質感內嵌 SVG 編輯視覺主圖（對應今日五大新聞意象） -->
+        <div class="lg:col-span-6">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 bg-slate-900">
+            <svg viewBox="0 0 800 470" class="w-full h-auto block" role="img" aria-label="2026年11月12日台灣今日新聞焦點視覺主圖：涵蓋台股輝達波動、APEC國際外交、五股交流道高架通車與寶林茶室案司法天平">
+              <defs>
+                <!-- 背景漸層 -->
+                <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0B132B" />
+                  <stop offset="50%" stop-color="#1E293B" />
+                  <stop offset="100%" stop-color="#0F172A" />
+                </linearGradient>
+                <!-- 金色光暈 -->
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#F59E0B" />
+                  <stop offset="100%" stop-color="#D97706" />
+                </linearGradient>
+                <!-- 科技青藍漸層 -->
+                <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="#0284C7" stop-opacity="0.05" />
+                </linearGradient>
+                <!-- 股市下跌紅漸層 -->
+                <linearGradient id="chartDrop" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.45" />
+                  <stop offset="100%" stop-color="#F43F5E" stop-opacity="0.0" />
+                </linearGradient>
+                <!-- 網格樣式 -->
+                <pattern id="gridPattern" width="32" height="32" patternUnits="userSpaceOnUse">
+                  <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#334155" stroke-width="0.6" stroke-opacity="0.45" />
+                </pattern>
+              </defs>
+
+              <!-- 底層 -->
+              <rect width="800" height="470" fill="url(#heroBg)" />
+              <rect width="800" height="470" fill="url(#gridPattern)" />
+
+              <!-- 裝飾性同心圓（象徵 APEC 全球連結與台灣樞紐位置） -->
+              <circle cx="400" cy="235" r="210" fill="none" stroke="#38BDF8" stroke-width="1" stroke-dasharray="6 6" opacity="0.25" />
+              <circle cx="400" cy="235" r="155" fill="none" stroke="#F59E0B" stroke-width="1.2" opacity="0.25" />
+              <ellipse cx="400" cy="235" rx="260" ry="95" fill="none" stroke="#94A3B8" stroke-width="0.9" opacity="0.2" transform="rotate(-14 400 235)" />
+
+              <!-- 頂部刊頭橫幅 -->
+              <rect x="28" y="24" width="744" height="44" rx="10" fill="#0F172A" fill-opacity="0.88" stroke="#475569" stroke-width="1" />
+              <circle cx="52" cy="46" r="6" fill="#F59E0B" />
+              <text x="68" y="51" fill="#F8FAFC" font-size="14" font-weight="700" letter-spacing="1.5">TAIWAN NEWS DIGEST ・ 2026.11.12 今日焦點全覽</text>
+              <text x="752" y="51" text-anchor="end" fill="#FBBF24" font-size="13" font-weight="700">TOP 10 HEADLINES</text>
+
+              <!-- 左上卡片：財經科技（輝達效應 & 台股震盪） -->
+              <g transform="translate(28, 86)">
+                <rect width="358" height="162" rx="14" fill="#1E293B" fill-opacity="0.92" stroke="#334155" stroke-width="1.2" />
+                <rect x="16" y="16" width="84" height="24" rx="6" fill="#9F1239" />
+                <text x="58" y="32" text-anchor="middle" fill="#FFE4E6" font-size="11.5" font-weight="700">財經科技焦點</text>
+                <text x="112" y="32" fill="#FDA4AF" font-size="12" font-weight="700">輝達盤後 -8% ・ 台股震盪逾500點</text>
+                <text x="16" y="60" fill="#F8FAFC" font-size="15.5" font-weight="700">AI供應鏈波動 × MSCI權重三升</text>
+
+                <!-- 迷你晶片與K線走勢圖 -->
+                <path d="M 18 105 L 65 95 L 110 112 L 155 88 L 195 132 L 245 118 L 295 136 L 338 110 L 338 148 L 18 148 Z" fill="url(#chartDrop)" />
+                <path d="M 18 105 L 65 95 L 110 112 L 155 88 L 195 132 L 245 118 L 295 136 L 338 110" fill="none" stroke="#FB7185" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="195" cy="132" r="4.5" fill="#F43F5E" stroke="#FFF" stroke-width="1.5" />
+                <circle cx="338" cy="110" r="4.5" fill="#34D399" stroke="#FFF" stroke-width="1.5" />
+                <text x="195" y="148" text-anchor="middle" fill="#FDA4AF" font-size="10.5" font-weight="600">早盤急殺測底</text>
+                <text x="305" y="98" text-anchor="middle" fill="#6EE7B7" font-size="10.5" font-weight="600">MSCI三升支撐</text>
+              </g>
+
+              <!-- 右上卡片：政治外交（APEC領袖會議 & G7台海聲明） -->
+              <g transform="translate(414, 86)">
+                <rect width="358" height="162" rx="14" fill="#1E293B" fill-opacity="0.92" stroke="#334155" stroke-width="1.2" />
+                <rect x="16" y="16" width="84" height="24" rx="6" fill="#0369A1" />
+                <text x="58" y="32" text-anchor="middle" fill="#E0F2FE" font-size="11.5" font-weight="700">政治外交焦點</text>
+                <text x="112" y="32" fill="#7DD3FC" font-size="12" font-weight="700">APEC領袖代表 ・ G7外長聲明</text>
+                <text x="16" y="60" fill="#F8FAFC" font-size="15.5" font-weight="700">施振榮代表出席 × 守護台海和平</text>
+
+                <!-- 地球經緯與台灣連結意象 -->
+                <g transform="translate(56, 112)">
+                  <circle cx="0" cy="0" r="32" fill="url(#cyanGrad)" stroke="#38BDF8" stroke-width="1.6" />
+                  <ellipse cx="0" cy="0" rx="15" ry="32" fill="none" stroke="#38BDF8" stroke-width="1.1" />
+                  <line x1="-32" y1="0" x2="32" y2="0" stroke="#38BDF8" stroke-width="1.1" />
+                  <circle cx="8" cy="-4" r="4" fill="#FBBF24" />
+                </g>
+                <text x="108" y="102" fill="#E2E8F0" font-size="12.5" font-weight="600">• 總統府宣布宏碁創辦人施振榮出任代表</text>
+                <text x="108" y="124" fill="#E2E8F0" font-size="12.5" font-weight="600">• G7外長重申台海和平穩定重要性</text>
+                <text x="108" y="144" fill="#93C5FD" font-size="11.5">展現台灣高科技實力與國際責任</text>
+              </g>
+
+              <!-- 左下卡片：社會司法（寶林茶室案一審宣判） -->
+              <g transform="translate(28, 266)">
+                <rect width="358" height="174" rx="14" fill="#1E293B" fill-opacity="0.92" stroke="#334155" stroke-width="1.2" />
+                <rect x="16" y="16" width="84" height="24" rx="6" fill="#B45309" />
+                <text x="58" y="32" text-anchor="middle" fill="#FEF3C7" font-size="11.5" font-weight="700">社會司法頭條</text>
+                <text x="112" y="32" fill="#FCD34D" font-size="12" font-weight="700">台北地院一審宣判出爐</text>
+                <text x="16" y="60" fill="#F8FAFC" font-size="15.5" font-weight="700">寶林茶室食安案一審判決</text>
+
+                <!-- 司法天平圖示 -->
+                <g transform="translate(56, 118)">
+                  <line x1="0" y1="-28" x2="0" y2="26" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" />
+                  <line x1="-18" y1="26" x2="18" y2="26" stroke="#FBBF24" stroke-width="3" stroke-linecap="round" />
+                  <line x1="-26" y1="-18" x2="26" y2="-18" stroke="#FDE68A" stroke-width="2.2" stroke-linecap="round" />
+                  <path d="M -32 -4 L -26 -18 L -20 -4 Z" fill="#F59E0B" />
+                  <path d="M 20 -4 L 26 -18 L 32 -4 Z" fill="#F59E0B" />
+                </g>
+                <text x="106" y="96" fill="#FDE68A" font-size="12.5" font-weight="700">負責人黎仿軒：判刑 1年10月</text>
+                <text x="106" y="118" fill="#E2E8F0" font-size="12.5">代班廚師：判刑 8月｜店長：無罪</text>
+                <text x="106" y="140" fill="#94A3B8" font-size="11.5">北檢收到判決書後將研議是否上訴</text>
+              </g>
+
+              <!-- 右下卡片：交通建設（五股交流道北入高架匝道今通車） -->
+              <g transform="translate(414, 266)">
+                <rect width="358" height="174" rx="14" fill="#1E293B" fill-opacity="0.92" stroke="#334155" stroke-width="1.2" />
+                <rect x="16" y="16" width="84" height="24" rx="6" fill="#047857" />
+                <text x="58" y="32" text-anchor="middle" fill="#D1FAE5" font-size="11.5" font-weight="700">重大交通建設</text>
+                <text x="112" y="32" fill="#6EE7B7" font-size="12" font-weight="700">斥資48.67億 ・ 今日正式通車</text>
+                <text x="16" y="60" fill="#F8FAFC" font-size="15.5" font-weight="700">五股交流道北入高架匝道啟用</text>
+
+                <!-- 高架橋樑立體線條意象 -->
+                <g transform="translate(18, 82)">
+                  <rect width="322" height="74" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" />
+                  <path d="M 14 54 Q 110 54 165 32 T 308 24" fill="none" stroke="#10B981" stroke-width="5" stroke-linecap="round" />
+                  <path d="M 14 54 Q 110 54 165 32 T 308 24" fill="none" stroke="#A7F3D0" stroke-width="1.2" stroke-dasharray="6 6" />
+                  <line x1="120" y1="44" x2="120" y2="66" stroke="#64748B" stroke-width="3" />
+                  <line x1="195" y1="30" x2="195" y2="66" stroke="#64748B" stroke-width="3" />
+                  <line x1="265" y1="25" x2="265" y2="66" stroke="#64748B" stroke-width="3" />
+                  <text x="24" y="25" fill="#A7F3D0" font-size="11.5" font-weight="700">台65線直上國道1號</text>
+                  <text x="298" y="58" text-anchor="end" fill="#FBBF24" font-size="12.5" font-weight="800">車程 15分 ➔ 3分</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 篩選與搜尋控制列 -->
+  <section class="bg-white border-b border-slate-200 shadow-sm sticky top-[56px] z-20 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      
+      <!-- 分類篩選按鈕 -->
+      <div class="flex flex-wrap items-center gap-2" id="categoryFilters">
+        <button data-cat="全部" class="filter-btn active px-4 py-2 rounded-full text-sm font-bold bg-navy-900 text-white shadow-sm transition cursor-pointer">
+          全部新聞 (10)
+        </button>
+        <button data-cat="財經科技" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">
+          財經科技
+        </button>
+        <button data-cat="政治外交" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">
+          政治外交
+        </button>
+        <button data-cat="社會司法" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">
+          社會司法
+        </button>
+        <button data-cat="交通生活" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">
+          交通生活
+        </button>
+      </div>
+
+      <!-- 關鍵字搜尋框 -->
+      <div class="relative w-full md:w-72">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="搜尋關鍵字（如：輝達、寶林、五股...）"
+          class="w-full pl-10 pr-9 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold-600 focus:border-gold-600 text-slate-800 placeholder-slate-400"
+        />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 新聞列表主內容區 -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 bg-newsprint">
+    
+    <!-- 篩選狀態資訊列 -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-6 bg-gold-600 rounded-full"></span>
+        <h2 id="sectionHeading" class="font-editorial text-xl sm:text-2xl font-bold text-navy-900">
+          今日十大重點新聞排行
+        </h2>
+      </div>
+      <span id="resultCount" class="text-sm text-slate-500 font-medium">顯示 10 則報導</span>
+    </div>
+
+    <!-- 新聞卡片網格 -->
+    <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 由 JavaScript 動態渲染新聞卡片 -->
+    </div>
+
+    <!-- 查無結果提示 -->
+    <div id="emptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-sm">
+      <div class="text-4xl mb-3">📰</div>
+      <h3 class="text-lg font-bold text-slate-800 mb-1">找不到符合條件的新聞報導</h3>
+      <p class="text-sm text-slate-500 mb-4">請嘗試更換關鍵字或切換回「全部新聞」分類。</p>
+      <button onclick="resetAllFilters()" class="px-4 py-2 bg-navy-900 text-white text-sm font-medium rounded-xl hover:bg-navy-800 transition cursor-pointer">
+        重設篩選條件
+      </button>
+    </div>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="bg-navy-900 text-slate-400 border-t border-slate-800 py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+      <div>
+        <span class="font-editorial font-bold text-white text-base">台灣每日新聞簡報</span>
+        <span class="mx-2 text-slate-600">|</span>
+        <span>2026年11月12日 星期四 編輯室彙整</span>
+      </div>
+      <div class="text-slate-400">
+        本簡報專為快速掌握每日國內重要政經、司法、交通與民生動態設計
+      </div>
+    </div>
+  </footer>
+
+  <!-- 新聞完整報導詳情互動視窗 (Modal) -->
+  <div id="newsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs modal-backdrop" onclick="closeModalOnBackdrop(event)">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 modal-panel" id="modalPanel">
+      <!-- Modal 頂部色帶 -->
+      <div class="bg-navy-900 px-6 py-4 flex items-center justify-between border-b-2 border-gold-600 sticky top-0 z-10">
+        <div class="flex items-center gap-3">
+          <span id="modalRank" class="px-2.5 py-0.5 rounded bg-gold-600 text-white font-extrabold text-sm tracking-wider">TOP 01</span>
+          <span id="modalCategory" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-amber-300 border border-slate-600">社會司法</span>
+        </div>
+        <button onclick="closeNewsModal()" class="text-slate-300 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition cursor-pointer" aria-label="關閉視窗">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal 內容 -->
+      <div class="p-6 sm:p-8 space-y-5">
+        <div class="text-xs text-slate-500 font-medium" id="modalMeta">2026年11月12日・編輯室深度整理</div>
+        <h3 id="modalTitle" class="font-editorial text-2xl sm:text-3xl font-bold text-navy-900 leading-snug">
+          新聞標題
+        </h3>
+
+        <!-- 重點摘要框 -->
+        <div class="bg-amber-50/80 border-l-4 border-gold-600 p-4 rounded-r-xl">
+          <div class="text-xs font-bold text-amber-800 uppercase tracking-wider mb-1">核心摘要</div>
+          <p id="modalSummary" class="text-slate-800 text-sm sm:text-base leading-relaxed font-medium"></p>
+        </div>
+
+        <!-- 完整報導脈絡 -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-navy-900 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-navy-900"></span>
+            事件脈絡與詳細說明
+          </h4>
+          <p id="modalDetail" class="text-slate-600 text-sm sm:text-base leading-relaxed"></p>
+        </div>
+
+        <!-- 關鍵影響點 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+          <h4 class="text-sm font-bold text-navy-900 flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+            </svg>
+            關鍵影響與後續觀察
+          </h4>
+          <ul id="modalImpacts" class="list-disc list-inside text-sm text-slate-700 space-y-1.5"></ul>
+        </div>
+      </div>
+
+      <!-- Modal 底部按鈕 -->
+      <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button id="prevNewsBtn" onclick="navigateModal(-1)" class="px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 transition cursor-pointer">
+            ← 上一則
+          </button>
+          <button id="nextNewsBtn" onclick="navigateModal(1)" class="px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 transition cursor-pointer">
+            下一則 →
+          </button>
+        </div>
+        <button onclick="closeNewsModal()" class="px-4 py-1.5 text-xs sm:text-sm font-bold rounded-lg bg-navy-900 text-white hover:bg-navy-800 transition cursor-pointer">
+          關閉閱讀
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 2026年11月12日 台灣前十大重要新聞完整資料庫
+    const newsData = [
+      {
+        rank: '01',
+        filterCategory: '社會司法',
+        tagLabel: '社會司法',
+        badgeColor: 'bg-amber-100 text-amber-800 border-amber-300',
+        title: '寶林茶室案一審宣判：負責人黎仿軒遭判1年10月、代班廚師判8月，店長獲判無罪',
+        summary: '備受社會關注的寶林茶室食物中毒案今日由台北地方法院進行一審宣判，負責人黎仿軒依違反食安法與過失致死等罪判處1年10月徒刑，代班廚師判刑8月，店長則獲判無罪；北檢表示收到判決書後將研議是否上訴。',
+        detail: '震撼全台的「寶林茶室」邦克列酸（米酵菌酸）食物中毒事件，歷經檢方偵辦起訴與法院審理後，於今日正式宣判。合議庭認定負責人黎仿軒未善盡食材保存與衛生管理監督之責，判處有期徒刑1年10月；實際負責烹調與食材存放的代班廚師判刑8月；至於店經理（店長）因未直接參與食材儲存決策與烹調作業，獲判無罪。',
+        impacts: [
+          '連鎖餐飲業食材冷鏈保存與衛生稽核標準將面臨更嚴格的法規檢視。',
+          '台北地檢署針對無罪部分及量刑輕重，將於收受判決書後評估上訴空間。',
+          '受害者家屬民事求償與團體訴訟後續進展仍為社會關注焦點。'
+        ]
+      },
+      {
+        rank: '02',
+        filterCategory: '政治外交',
+        tagLabel: '政治外交',
+        badgeColor: 'bg-sky-100 text-sky-800 border-sky-300',
+        title: 'APEC領袖會議行前聚焦：總統府宣布施振榮代表出席，G7外長聲明重申台海和平穩定',
+        summary: '總統府正式宣布由宏碁創辦人施振榮出任今年APEC經濟領袖會議領袖代表；同時G7外長發表聯合聲明重申台海和平穩定重要性，府院強調台灣不會因外部打壓而放棄國際責任。',
+        detail: '隨著亞太經濟合作會議（APEC）領袖峰會登場在即，總統府今日公布由台灣科技界重量級領袖、宏碁集團創辦人施振榮擔任我國領袖代表，盼借重其在全球資通訊產業與數位轉型的深厚影響力，深化與各國經貿合作。與此同時，七大工業國集團（G7）外長聲明再度明確納入維護台海和平與穩定的立場，反對任何片面改變現狀的企圖。',
+        impacts: [
+          '施振榮具備豐富國際商界人脈，有助台灣在AI與半導體供應鏈議題上與多國領袖展開實質對話。',
+          'G7外長聲明展現民主陣營對台海安全高度共識，強化國際挺台力道。',
+          '政府重申面對外交打壓仍將積極參與全球經濟治理與永續合作。'
+        ]
+      },
+      {
+        rank: '03',
+        filterCategory: '財經科技',
+        tagLabel: '財經科技',
+        badgeColor: 'bg-rose-100 text-rose-800 border-rose-300',
+        title: '輝達黃仁勳風波牽動台股與供應鏈：輝達盤後重挫逾8%，台股早盤震盪逾500點、台積電一度跌40元',
+        summary: '受輝達（NVIDIA）盤後股價重挫逾8%衝擊，台股今日早盤劇烈震盪超過500點，權值王台積電盤中一度下跌40元；針對相關風波，陸委會證實涉案對象過去曾8度以商務名義入境台灣，未來將啟動嚴審機制。',
+        detail: '美股科技板塊昨夜出現劇烈波動，AI晶片龍頭輝達（NVIDIA）盤後重挫逾8%，連帶引發亞洲科技股賣壓。台股今日開盤承壓，加權指數早盤上下震盪超過500點，AI伺服器與半導體族群首當其衝，台積電早盤一度重挫40元。針對外界高度關注的相關涉案人員動態，陸委會今日出面證實該名人士過去曾8度透過商務履約名義申請入境，後續相關單位將從嚴審查把關。',
+        impacts: [
+          '台股AI概念股短線面臨高檔獲利了結與外資調節壓力，波動幅度加劇。',
+          '台積電與台灣硬體供應鏈基本面雖穩健，但短期股價仍受美股科技財報與消息面牽動。',
+          '陸委會與經濟部將強化高科技產業商務人士來台審查機制，防範技術與國安風險。'
+        ]
+      },
+      {
+        rank: '04',
+        filterCategory: '交通生活',
+        tagLabel: '交通建設',
+        badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+        title: '新北五股交流道北入高架匝道今正式通車：斥資48.67億元「台65線直上國1」，車程15分縮至3分',
+        summary: '新北市五股地區重大交通瓶頸迎來突破！斥資48.67億元興建的「國道1號五股交流道增設北入高架匝道」今日正式通車，台65線車流可直接銜接國1北上，尖峰時段車程由原本15分鐘大幅縮短至3分鐘。',
+        detail: '長期以來，新莊、泰山與五股地區車流經台65線下新五路欲銜接國道1號北上時，常與平面車流交織造成嚴重回堵。交通部高速公路局與新北市政府合作推動「五股交流道增設北入高架匝道工程」，總經費達48.67億元，今日正式開放通車，實現高架對高架的無縫分流。',
+        impacts: [
+          '台65線北上車流無須再下平面道路停等紅綠燈，尖峰通行時間節省約12分鐘。',
+          '大幅減輕新五路、楓江路周邊平面道路交通負荷，改善五股工業區與泰山通勤效率。',
+          '北台灣高快速公路網進一步串聯，提升雙北與桃園間物流運輸效能。'
+        ]
+      },
+      {
+        rank: '05',
+        filterCategory: '政治外交',
+        tagLabel: '地方政治',
+        badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+        title: '九合一選戰升溫：基泰大直案錄音爭議延燒，李四川競辦擬提告李正皓抹黑；羅大佑言論引發朝野交鋒',
+        summary: '隨著九合一選戰白熱化，基泰大直案相關錄音爭議持續延燒，李四川競選辦公室強硬回應擬對評論員李正皓提告抹黑；另一方面，音樂人羅大佑近日關於婚育的發言亦在政壇發酵，引發朝野陣營與前總統蔡英文隔空交鋒。',
+        detail: '地方大選攻防進入白熱化階段，圍繞基泰大直鄰損案的市政處理過程再掀波瀾，針對特定錄音檔指控，李四川競選團隊強調相關言論已嚴重偏離事實、意圖影響選情，擬循法律途徑提告以正視聽。同時，資深音樂人羅大佑受訪時談及少子化與婚育觀念的發言，意外成為朝野攻防話題，前總統蔡英文亦透過社群發聲回應多元成家與青年政策理念，吸引高度網路討論。',
+        impacts: [
+          '市政建設與危機處理能力成為雙北選戰核心檢驗指標，法律戰恐進一步升溫。',
+          '少子化、青年成家與托育政策再度成為跨世代選民關注的焦點議題。',
+          '名人發言與網路輿情效應加速選戰議題擴散，考驗各陣營危機應變速度。'
+        ]
+      },
+      {
+        rank: '06',
+        filterCategory: '社會司法',
+        tagLabel: '司法政壇',
+        badgeColor: 'bg-amber-100 text-amber-800 border-amber-300',
+        title: '國民黨彰化議長謝典霖涉詐取公款案裁定延押2個月，年底即便當選也將面臨無法宣誓就職變數',
+        summary: '彰化縣議長謝典霖涉詐領公款案件偵審持續進行，法院考量仍有串證與調查必要，裁定自即日起延長羈押禁見2個月；法界指出，若至年底就職日時仍處羈押狀態，即便順利當選議員也將面臨無法如期宣誓就職的重大變數。',
+        detail: '國民黨籍彰化縣議長謝典霖因涉嫌詐取公款遭檢方聲押獲准後，羈押期限將屆。法院審酌全案尚有相關證人及金流細節待釐清，認仍有勾串共犯或證人之虞，裁定延長羈押2個月。由於今年底即將舉行地方公職人員選舉與新一屆議會成立，此裁定對地方政壇投下震撼彈。',
+        impacts: [
+          '若延押期間橫跨年底就職日，依《宣誓條例》規定無法親自宣誓將影響議員資格與議長改選布局。',
+          '彰化縣議會藍綠與無黨籍勢力版圖面臨重新洗牌，地方派系動態備受矚目。',
+          '地方民代公費助理與公款核銷制度再度成為司法機關清查重點。'
+        ]
+      },
+      {
+        rank: '07',
+        filterCategory: '財經科技',
+        tagLabel: '財經股市',
+        badgeColor: 'bg-rose-100 text-rose-800 border-rose-300',
+        title: 'MSCI指數季度調整出爐：台股權重獲「三升」於11/30盤後生效，景碩入列標準指數成分股',
+        summary: '明晟（MSCI）公布最新季度調整結果，台股在「MSCI全球新興市場指數」、「MSCI亞洲除日本指數」及「MSCI全球市場指數」權重全面獲得調升（三升），將於11月30日盤後正式生效；個股方面，景碩入列全球標準指數成分股，全球小型指數則新增18檔、剔除12檔。',
+        detail: '在今日台股受美股科技股回檔震盪之際，MSCI最新季度權重調整為市場注入一劑強心針。台股在三大主要指數權重同步獲得上調，反映台灣半導體與AI供應鏈在全球新興市場中的市值比重持續提升。本次調整中，載板大廠景碩成功晉升MSCI全球標準指數成分股，小型指數則呈現「18進12出」格局。',
+        impacts: [
+          '被動式追蹤基金預計於11月30日尾盤進行換股調整，為台股帶來潛在國際資金活水。',
+          '新納入標準指數的景碩及18檔小型指數新兵，短線可望吸引法人買盤關注。',
+          '權重「三升」有助抵銷部分美股波動帶來的外資提款壓力，穩固中長期多頭信心。'
+        ]
+      },
+      {
+        rank: '08',
+        filterCategory: '政治外交',
+        tagLabel: '兩岸外交',
+        badgeColor: 'bg-sky-100 text-sky-800 border-sky-300',
+        title: '260位學者連署發起「兩岸和平倡議」，陸委會主委邱垂正回應強調台海和平最大威脅是中共',
+        summary: '國內外共260位學者共同連署發起「兩岸和平倡議」，呼籲兩岸重啟對話、降低衝突風險；陸委會主委邱垂正今日正式回應，感謝各界對和平的關注，但強調破壞台海現狀與和平的最大威脅源於中共，呼籲各界認清北京政權本質。',
+        detail: '由260名學界人士跨領域連署的「兩岸和平倡議」今日公開發表，主張透過理性溝通與民間交流化解台海緊張局勢。對此，陸委會主委邱垂正受訪時重申政府維持台海和平穩定現狀的一貫立場，並指出近年共機艦頻繁擾台、灰色地帶脅迫與對台統戰滲透才是區域不安根源，和平必須建立在對等尊嚴與強大自我防衛能力之上。',
+        impacts: [
+          '台灣內部針對「如何維持台海和平」的路線辯論再度浮上檯面，牽動民意走向。',
+          '政府堅持「對等尊嚴」前提下才進行健康有序交流，短期官方直接對話仍具挑戰。',
+          '學界連署反映社會對避戰與區域穩定的深切期待，考驗執政團隊兩岸論述溝通。'
+        ]
+      },
+      {
+        rank: '09',
+        filterCategory: '交通生活',
+        tagLabel: '社會治安',
+        badgeColor: 'bg-orange-100 text-orange-800 border-orange-300',
+        title: '新北土城深夜工廠大火延燒周邊3家廠商，消防局緊急呼籲土城、板橋、中和鄰近住戶緊閉門窗',
+        summary: '新北市土城區一處工廠昨晚深夜發生大火，火勢猛烈並波及延燒周邊共3家廠商，所幸消防人員全力灌救未造成人員受困；新北市消防局與環保局發布空污警報，提醒土城、板橋、中和下風處民眾緊閉門窗、外出配戴口罩。',
+        detail: '新北市土城工業區周邊昨夜傳出嚴重火警，現場廠房存放大量易燃物品導致濃煙直竄天際，火勢迅速延燒鄰近3家廠房。新北市消防局出動大批人車趕赴現場佈線阻隔並控制火勢，並於今日持續進行殘火處理與火場鑑定。由於燃燒產生大量粒狀污染物隨風擴散，市府緊急針對周邊行政區發布空氣品質提醒。',
+        impacts: [
+          '土城、板橋及中和部分區域空氣品質短暫受影響，過敏族群與長者應減少戶外活動。',
+          '4家受災廠商面臨廠房設備損毀與停工損失，後續火調原因與保險理賠將陸續展開。',
+          '新北市府將針對老舊連棟廠房加強消防安檢與危險物品申報稽查。'
+        ]
+      },
+      {
+        rank: '10',
+        filterCategory: '交通生活',
+        tagLabel: '民生天氣',
+        badgeColor: 'bg-teal-100 text-teal-800 border-teal-300',
+        title: '全台受僱員工前9月月薪平均成長2.93%創26年同期次高；今短暫回暖、週六華南雲雨區東移全台轉雨',
+        summary: '主計總處公布最新薪資統計，今年前9月全體受僱員工經常性薪資平均年增2.93%，創下近26年來同期次高紀錄；天氣方面，今日全台各地短暫回暖、多雲到晴，但週六起受華南雲雨區東移影響，全台將轉為有雨濕涼天氣。',
+        detail: '在民生經濟數據方面，受惠於企業調薪潮、基本工資調升及科技與服務業業績穩健，主計總處統計今年1至9月全體受僱員工經常性薪資平均數年增2.93%，展現穩健成長動能。氣象署則提醒，今日東北季風減弱，各地白天氣溫回升舒適，不過好天氣僅維持到週五，週六起華南雲雨區東移水氣增多，中部以北及東半部降雨機率明顯提高。',
+        impacts: [
+          '實質薪資維持正成長有助支撐第四季百貨週年慶與年末內需消費動能。',
+          '不同產業間薪資成長仍存在結構性差異，電子零組件與金融業表現最為亮眼。',
+          '週末計畫出遊或參加戶外活動的民眾應備妥雨具並留意氣溫變化。'
+        ]
+      }
+    ];
+
+    let currentCategory = '全部';
+    let currentSearch = '';
+    let activeModalIndex = 0;
+
+    // 初始化渲染
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNewsCards();
+      setupEventListeners();
+    });
+
+    // 綁定篩選、搜尋與鍵盤事件
+    function setupEventListeners() {
+      // 分類按鈕點擊
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-navy-900', 'text-white', 'shadow-sm', 'active');
+            b.classList.add('bg-slate-100', 'text-slate-700');
+          });
+          btn.classList.remove('bg-slate-100', 'text-slate-700');
+          btn.classList.add('bg-navy-900', 'text-white', 'shadow-sm', 'active');
+
+          currentCategory = btn.getAttribute('data-cat');
+          renderNewsCards();
+        });
+      });
+
+      // 關鍵字即時搜尋
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.trim().toLowerCase();
+        clearBtn.classList.toggle('hidden', currentSearch.length === 0);
+        renderNewsCards();
+      });
+
+      // ESC 關閉 Modal / 左右鍵切換新聞
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('newsModal');
+        if (!modal.classList.contains('hidden')) {
+          if (e.key === 'Escape') closeNewsModal();
+          if (e.key === 'ArrowLeft') navigateModal(-1);
+          if (e.key === 'ArrowRight') navigateModal(1);
+        }
+      });
+    }
+
+    // 篩選資料並渲染卡片
+    function renderNewsCards() {
+      const grid = document.getElementById('newsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const resultCount = document.getElementById('resultCount');
+      const sectionHeading = document.getElementById('sectionHeading');
+
+      const filtered = newsData.filter(item => {
+        const matchCat = currentCategory === '全部' || item.filterCategory === currentCategory;
+        const matchSearch =
+          currentSearch === '' ||
+          item.title.toLowerCase().includes(currentSearch) ||
+          item.summary.toLowerCase().includes(currentSearch) ||
+          item.tagLabel.toLowerCase().includes(currentSearch) ||
+          item.impacts.some(imp => imp.toLowerCase().includes(currentSearch));
+        return matchCat && matchSearch;
+      });
+
+      sectionHeading.textContent =
+        currentCategory === '全部'
+          ? '今日十大重點新聞排行'
+          : `【${currentCategory}】相關重點新聞`;
+      resultCount.textContent = `顯示 ${filtered.length} 則報導`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered
+        .map((item) => {
+          const originalIdx = newsData.findIndex(n => n.rank === item.rank);
+          const isTopThree = ['01', '02', '03'].includes(item.rank);
+          return `
+            <article onclick="openNewsModal(${originalIdx})" class="news-card group bg-white rounded-2xl border ${isTopThree ? 'border-amber-300/90 ring-1 ring-amber-200/60' : 'border-slate-200'} p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between cursor-pointer">
+              <div>
+                <!-- 頂部編號與分類 -->
+                <div class="flex items-center justify-between gap-2 mb-3.5">
+                  <div class="flex items-center gap-2.5">
+                    <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl font-extrabold text-sm tracking-tight ${isTopThree ? 'bg-navy-900 text-amber-400 border border-gold-600' : 'bg-slate-100 text-navy-900'}">
+                      ${item.rank}
+                    </span>
+                    <span class="px-2.5 py-1 rounded-full text-xs font-bold border ${item.badgeColor}">
+                      ${item.tagLabel}
+                    </span>
+                  </div>
+                  ${isTopThree ? '<span class="text-xs font-bold text-gold-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">焦點頭條</span>' : ''}
+                </div>
+
+                <!-- 標題 -->
+                <h3 class="font-editorial text-lg sm:text-xl font-bold text-navy-900 group-hover:text-gold-600 transition-colors leading-snug mb-3">
+                  ${item.title}
+                </h3>
+
+                <!-- 摘要 -->
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                  ${item.summary}
+                </p>
+              </div>
+
+              <!-- 底部關鍵影響預覽與展開按鈕 -->
+              <div class="pt-4 border-t border-slate-100 space-y-3">
+                <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
+                  <div class="text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-600"></span>
+                    關鍵影響點
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                    ${item.impacts[0]}
+                  </p>
+                </div>
+
+                <div class="flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600 transition-colors no-print">
+                  <span>點擊查看完整報導與影響分析</span>
+                  <span class="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    閱讀詳情
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    // 清除搜尋框
+    function clearSearch() {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = '';
+      currentSearch = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderNewsCards();
+    }
+
+    // 重設所有篩選條件
+    function resetAllFilters() {
+      currentCategory = '全部';
+      clearSearch();
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(b => {
+        const isAll = b.getAttribute('data-cat') === '全部';
+        b.classList.toggle('bg-navy-900', isAll);
+        b.classList.toggle('text-white', isAll);
+        b.classList.toggle('shadow-sm', isAll);
+        b.classList.toggle('active', isAll);
+        b.classList.toggle('bg-slate-100', !isAll);
+        b.classList.toggle('text-slate-700', !isAll);
+      });
+      renderNewsCards();
+    }
+
+    // 開啟新聞詳情視窗
+    function openNewsModal(index) {
+      activeModalIndex = index;
+      const item = newsData[index];
+      if (!item) return;
+
+      document.getElementById('modalRank').textContent = `TOP ${item.rank}`;
+      document.getElementById('modalCategory').textContent = item.tagLabel;
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalSummary').textContent = item.summary;
+      document.getElementById('modalDetail').textContent = item.detail;
+
+      const impactsEl = document.getElementById('modalImpacts');
+      impactsEl.innerHTML = item.impacts.map(point => `<li>${point}</li>`).join('');
+
+      // 更新上下則按鈕狀態
+      document.getElementById('prevNewsBtn').disabled = index === 0;
+      document.getElementById('prevNewsBtn').classList.toggle('opacity-40', index === 0);
+      document.getElementById('nextNewsBtn').disabled = index === newsData.length - 1;
+      document.getElementById('nextNewsBtn').classList.toggle('opacity-40', index === newsData.length - 1);
+
+      const modal = document.getElementById('newsModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 切換上一則 / 下一則新聞
+    function navigateModal(step) {
+      const nextIdx = activeModalIndex + step;
+      if (nextIdx >= 0 && nextIdx < newsData.length) {
+        openNewsModal(nextIdx);
+      }
+    }
+
+    // 關閉新聞詳情視窗
+    function closeNewsModal() {
+      const modal = document.getElementById('newsModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target.id === 'newsModal') {
+        closeNewsModal();
+      }
+    }
+
+    // 一鍵複製今日十大新聞純文字簡報（使用相容 iFrame 的 execCommand）
+    function copySummaryText() {
+      const header = '【2026年11月12日 星期四｜台灣今日前十大重要新聞】\n\n';
+      const body = newsData
+        .map(item => `${item.rank}.【${item.tagLabel}】${item.title}\n   摘要：${item.summary}`)
+        .join('\n\n');
+      const fullText = header + body;
+
+      const textarea = document.createElement('textarea');
+      textarea.value = fullText;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+        showToast('已複製「2026年11月12日 十大新聞文字簡報」至剪貼簿！');
+      } catch (err) {
+        showToast('複製失敗，請手動選取內容複製。');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastMsg');
+      document.getElementById('toastText').textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
